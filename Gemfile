@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 gem 'unicorn'
 gem 'geocoder'
+gem 'acts-as-taggable-on', '~> 4.0'
 
 gem 'rest-client'
 # Use Capistrano for deployment
