@@ -12,6 +12,13 @@ class LikesController < ApplicationController
   def show
   end
 
+  # GET /likes/search?session_id=1
+  # GET /likes/search.json?session_id=1
+  def search
+    session_id = params["session_id"]
+    @likes = Like.where(session_id: session_id)
+  end
+
   # GET /likes/new
   def new
     @like = Like.new
