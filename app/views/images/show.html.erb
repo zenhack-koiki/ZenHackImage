@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @image.url %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @image.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @image.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>

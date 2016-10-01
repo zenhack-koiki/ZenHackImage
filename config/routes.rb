@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :images
   resources :likes do
     collection do
       get 'search'
