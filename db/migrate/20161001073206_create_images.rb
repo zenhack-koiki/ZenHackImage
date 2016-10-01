@@ -4,7 +4,6 @@ class CreateImages < ActiveRecord::Migration
       t.string :url
       t.float :latitude
       t.float :longitude
-
       t.timestamps null: false
     end
   end

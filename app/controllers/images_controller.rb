@@ -1,5 +1,14 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_image, :check_params, only: [:show, :edit, :update, :destroy]
+
+  def search
+    @latitude = params[:latitude].to_f
+    @longitude = params[:longitude].to_f
+
+    @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(10)
+    render :json => @images
+  end
 
   # GET /images
   # GET /images.json
@@ -71,4 +80,10 @@ class ImagesController < ApplicationController
     def image_params
       params.require(:image).permit(:url, :latitude, :longitude)
     end
+
+  def check_params
+    return if params[:latitude] && params[:longitude]
+    render(:text => 'Forbidden.', :status => 403, :layout => false)
+  end
+
 end
