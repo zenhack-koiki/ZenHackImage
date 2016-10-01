@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161001063137) do
+ActiveRecord::Schema.define(version: 20161001081932) do
+
+  create_table "images", force: :cascade do |t|
+    t.string   "url",        limit: 255
+    t.float    "latitude",   limit: 24
+    t.float    "longitude",  limit: 24
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string   "session_id", limit: 255
+    t.string   "image_id",   limit: 255
+    t.boolean  "is_like",    limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "tests", force: :cascade do |t|
     t.datetime "created_at", null: false
