@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+<<<<<<< 25a91295d7826a17d509d880b4842b6478027f5b
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   # GET /images
@@ -71,4 +72,12 @@ class ImagesController < ApplicationController
     def image_params
       params.require(:image).permit(:url, :latitude, :longitude)
     end
+=======
+
+    def search
+        @images = Image.where(:url => "a")
+        render :json => @images
+    end
+
+>>>>>>> Add images
 end

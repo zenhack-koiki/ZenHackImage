@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-	get "/test", to: 'test#index'
+
+  get '/apis/zenhack/images', to: 'images#search'
 
 end
