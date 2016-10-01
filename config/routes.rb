@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'recommend/index'
+
   resources :images
   resources :likes do
     collection do
