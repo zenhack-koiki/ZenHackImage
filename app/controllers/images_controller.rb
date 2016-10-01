@@ -2,13 +2,11 @@ class ImagesController < ApplicationController
 
   before_action :set_image, :check_params, only: [:show, :edit, :update, :destroy]
 
-  @default_limit_distance = 50
-
   def search
     @latitude = params[:latitude].to_f
     @longitude = params[:longitude].to_f
 
-    @images = Image.near( [@latitude, @longitude], @default_limit_distance, :units => :km )
+    @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(10)
     render :json => @images
   end
 
