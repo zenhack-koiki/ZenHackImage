@@ -17,6 +17,10 @@ ActiveRecord::Schema.define(version: 20161001073206) do
     t.string   "url",        limit: 255
     t.float    "latitude",   limit: 24
     t.float    "longitude",  limit: 24
+    t.string   "name",       limit: 255
+    t.string   "state",      limit: 255
+    t.string   "city",       limit: 255
+    t.string   "zipcode",    limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
