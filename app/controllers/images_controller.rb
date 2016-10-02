@@ -3,7 +3,6 @@ class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
 
   def search
-    render :json => Image.findTaggedImage("1","2","3")
     @latitude = params[:latitude].to_f
     @longitude = params[:longitude].to_f
 
