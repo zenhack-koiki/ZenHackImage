@@ -53,7 +53,6 @@ namespace 'images' do
         response = RestClient.post("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAghMlAMRDwpANvgDnRjwPCo4vqJ0VGKhI", JSON.generate(json), {content_type: :json, accept: :json})
         data = JSON.parse(response.body)
         tags << data['responses'][0]['labelAnnotations'].map{|labelAnnotation| labelAnnotation['description']}
-        puts tags
         next if tags.empty?
 
         image = Image.new(url: image_url, latitude: lat, longitude: lon)
