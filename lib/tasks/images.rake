@@ -35,6 +35,7 @@ namespace 'images' do
     def print
       @list.each do |photo|
         image_url = photo['url_l']
+        next if photo['url_l'].nil?
         lat =  photo['latitude']
         lon =  photo['longitude']
         next if photo['tags'].nil?
