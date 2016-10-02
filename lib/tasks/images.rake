@@ -40,6 +40,7 @@ namespace 'images' do
         next if photo['tags'].nil?
 
         tags =  photo['tags'].split(' ')
+        p tags
 
         base64 = Base64.strict_encode64(RestClient.get(image_url).body)
         json = {"requests" => [
@@ -52,7 +53,9 @@ namespace 'images' do
                }
         response = RestClient.post("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAghMlAMRDwpANvgDnRjwPCo4vqJ0VGKhI", JSON.generate(json), {content_type: :json, accept: :json})
         data = JSON.parse(response.body)
+        tags ||= []
         tags << data['responses'][0]['labelAnnotations'].map{|labelAnnotation| labelAnnotation['description']}
+        p tags
         next if tags.empty?
 
         image = Image.new(url: image_url, latitude: lat, longitude: lon)
