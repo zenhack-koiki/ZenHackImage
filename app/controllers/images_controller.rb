@@ -6,8 +6,14 @@ class ImagesController < ApplicationController
     @latitude = params[:latitude].to_f
     @longitude = params[:longitude].to_f
 
-    @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(10)
-    render :json => @images
+    @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(100)
+    pure_images = []
+    @images.each do |image|
+      break if @images.where("latitude > ? AND latitude < ?", image.latitude - 0.0001, image.latitude + 0.0001).size > 2
+      pure_images.push(image)
+      break if pure_images.size > 10
+    end
+    render :json => pure_images
   end
 
   # GET /images
