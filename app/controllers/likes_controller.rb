@@ -17,7 +17,6 @@ class LikesController < ApplicationController
   def search
     session_id = params["session_id"]
     @likes = Like.where(session_id: session_id)
-    render :json => @images
   end
 
   # GET /likes/new
