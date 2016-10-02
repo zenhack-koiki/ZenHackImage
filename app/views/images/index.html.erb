@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Images</h1>
+<%= page_entries_info @images %>
 
 <table>
   <thead>
@@ -15,17 +16,13 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image.url %></td>
+        <td><img style="width: 200px;" src="<%= image.url %>" /></td>
         <td><%= image.latitude %></td>
         <td><%= image.longitude %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Image', new_image_path %>
+<%= paginate @images %>

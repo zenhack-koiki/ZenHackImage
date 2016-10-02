@@ -31,6 +31,7 @@ gem 'unicorn'
 gem 'geocoder'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'flickraw'
+gem 'kaminari'
 
 gem 'rest-client'
 # Use Capistrano for deployment
