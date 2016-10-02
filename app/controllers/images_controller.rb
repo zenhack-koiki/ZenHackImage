@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
     @longitude = params[:longitude].to_f
 
     @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(10)
-    render :json => @images
+    #render :json => @images
   end
 
   # GET /images
@@ -24,7 +24,6 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
-    binding.pry
   end
 
   # GET /images/1/edit
