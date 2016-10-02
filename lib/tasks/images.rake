@@ -54,7 +54,7 @@ namespace 'images' do
         response = RestClient.post("https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAghMlAMRDwpANvgDnRjwPCo4vqJ0VGKhI", JSON.generate(json), {content_type: :json, accept: :json})
         data = JSON.parse(response.body)
         tags ||= []
-        tags << data['responses'][0]['labelAnnotations'].map{|labelAnnotation| labelAnnotation['description']}
+        tags.concat data['responses'][0]['labelAnnotations'].map{|labelAnnotation| labelAnnotation['description']} unless data['responses'][0]['labelAnnotations'].nil?
         p tags
         next if tags.empty?
 
