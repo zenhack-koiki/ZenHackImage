@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
     @latitude = params[:latitude].to_f
     @longitude = params[:longitude].to_f
 
-    @images = Image.near( [@latitude, @longitude], 10.0, :units => :km ).limit(10)
+    @images = Image.near( [@latitude, @longitude], 100.0, :units => :km ).limit(10)
     render :json => @images
   end
 
